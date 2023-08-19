@@ -8,11 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.opera.OperaDriver;
+
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.Reporter;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -76,14 +76,12 @@ public class BaseTest {
             case "EDGE":
                 driver = new EdgeDriver();
                 break;
-            case "OPERA":
-                driver = new OperaDriver();
-                break;
+          
             case "IEXPLORER":
                 driver = new InternetExplorerDriver();
                 break;
         }
-        Reporter.log("======Launch Browser======", true);
+      
 
         // initiate Event Firing Driver so that it will capture all events
         e_driver = new EventFiringWebDriver(driver);
@@ -110,7 +108,7 @@ public class BaseTest {
         // this method will run Before each @Test method we will have
 
         driver.quit();
-        Reporter.log("======Browser Closed======");
+        
     }
 
 }

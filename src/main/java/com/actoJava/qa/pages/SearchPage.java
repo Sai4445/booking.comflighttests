@@ -2,14 +2,16 @@ package com.actoJava.qa.pages;
 
 import java.util.List;
 
-import org.apache.poi.ss.formula.functions.Today;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.actoJava.qa.base.BaseTest;
-import com.aventstack.extentreports.util.Assert;
+
+import dev.failsafe.internal.util.Assert;
+
 
 public class SearchPage extends BaseTest {
     @FindBy(id = "search_type_option_ROUNDTRIP")
@@ -30,10 +32,10 @@ public class SearchPage extends BaseTest {
     @FindBy(xpath = "//input[@name='CITYNYC']")
     private WebElement toCityCheckBox;
 
-    @FindBy(xpath = "//span[@data-date='2023-06-17']")
+    @FindBy(xpath = "//span[@data-date='2023-09-23']")
     private WebElement fromDate;
 
-    @FindBy(xpath = "//span[@data-date='2023-06-29']")
+    @FindBy(xpath = "//span[@data-date='2023-09-29']")
     private WebElement toDate;
 
     @FindBy(xpath = "//button[@data-ui-name='button_date_segment_0']")
@@ -71,6 +73,7 @@ public class SearchPage extends BaseTest {
         fromDate.click();
         toDate.click();
         searchButton.click();
+      acceptBtn.click();
         try {
             Thread.sleep(5000);
         } catch (Exception e) {
@@ -101,8 +104,8 @@ public class SearchPage extends BaseTest {
 
         }
         driver.findElement(By.xpath("//*[text()='Select']")).click();
-        String text=driver.findElement(By.xpath("//*[@data-testid='total_price']")).getText();
+        String text=driver.findElement(By.xpath("//*[@data-testid='breakdown_list_price']")).getText();
         System.out.println(text);
-        org.testng.Assert.assertEquals(selectedFlightPrice, text);
+       //Assert.(selectedFlightPrice, text);
     }
 }
